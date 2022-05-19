@@ -1,0 +1,15 @@
+server:
+  port: 7003
+eureka:
+  instance:
+    hostname: localhost #Eureka服务端的实例名称
+  client:
+    allow-redirects: false #是否向Eureka注册中心注册自己
+    fetch-registry: false  #如果为false,则表示自己为注册中心
+    service-url: # 监控页面
+      defaultZone: http://${eureka.instance.hostname}:${server.post}/eureka/
+      #defaultZone是service-url中的默认地址，因为是服务端的地址，不能写死，要重写，
+      #${eureka.instance.hostname}为上面配置的hostname服务端的实例名称
+
+      #若设置集群，则需要相互注册，关联起来就不用取值方式，直接写死
+      #defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/

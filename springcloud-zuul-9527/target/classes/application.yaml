@@ -1,0 +1,27 @@
+server:
+  port: 9527
+spring:
+  application:
+    name: srpingcloud-zuul # 微服务名字
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance:
+    instance-id: zull9527.com # 实例化id
+    prefer-ip-address: true # 隐藏真实id
+info:
+  app.name: ph.springcloud
+  company.name: blog.ph.com
+
+
+
+zuul:
+  routes:
+    mydept.serviceId: springcloud-provider-dept
+    mydept.path: /mydept/**
+    # 本来需要用服务名称来访问-->http://localhost:9527/springcloud-provider-dept/dept/get/5
+    # 现在起别名
+  ignored-services: springcloud-provider-dept  # 此微服务下的接口不能使用原路径访问，必须经过网关
+  # ignored-services: "*" # 所有微服务不能使用原路径访问，必须经过网关
+  prefix: /ph # 访问前缀

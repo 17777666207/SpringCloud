@@ -1,0 +1,49 @@
+server:
+  port: 8001
+mybatis:
+  #别名
+  type-aliases-package: com.ph.springcloud.entity
+  #mybatis核心配置
+  config-location: classpath:mybatis/mybatis-config.xml
+  #mapper文件位置配置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+#spring配置
+spring:
+  application:
+    #项目名字,注册时显示在eureka界面，为application名称
+    name: springcloud-provider-dept  #三个服务名称一致
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  #数据源
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/db01?useUnicode=true&amp;characterEncoding=UTF-8" />
+    username: root
+    password: 123456
+
+  #####################redis
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    lettuce:
+      pool:
+        max-wait: 100000
+        max-idle: 10
+        max-active: 100
+      timeout: 5000
+
+
+#Eureka 服务注册到哪里
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+      #若配置集群，需要全部注册：defaultZone: http://localhost:7001/eureka/,http://localhost:7002/eureka/,http://localhost:7003/eureka/
+  instance:
+    instance-id: springcloud-provider-dept8001 #修改eureka-->status默认描述信息
+#加入依赖包后可配置，为status的url内容
+info:
+  app.name: ph-springcloud
+  company.name: blog.ph.com
+
+
