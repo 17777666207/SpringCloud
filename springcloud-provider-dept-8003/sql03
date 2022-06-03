@@ -1,0 +1,36 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : mysql
+Source Server Version : 50727
+Source Host           : localhost:3306
+Source Database       : db03
+
+Target Server Type    : MYSQL
+Target Server Version : 50727
+File Encoding         : 65001
+
+Date: 2022-06-03 23:30:23
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for dept
+-- ----------------------------
+DROP TABLE IF EXISTS `dept`;
+CREATE TABLE `dept` (
+  `dempno` bigint(20) NOT NULL AUTO_INCREMENT,
+  `dname` varchar(255) DEFAULT NULL,
+  `db_sourse` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`dempno`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of dept
+-- ----------------------------
+INSERT INTO `dept` VALUES ('1', '开发部', 'db03');
+INSERT INTO `dept` VALUES ('2', '人事部', 'db03');
+INSERT INTO `dept` VALUES ('3', '事业部', 'db03');
+INSERT INTO `dept` VALUES ('4', '市场部', 'db03');
+INSERT INTO `dept` VALUES ('5', '运维部', 'db03');
